@@ -2,6 +2,7 @@ try:
     birth_year = int(input("Enter your year of birth: "))
     future_year = int(input("Enter a future year: "))
 
+    # Validate input by checking for negative values and ensuring the future year is greater than the birth year
     if birth_year < 0 or future_year < 0:
         print("Years cannot be negative.")
     elif future_year <= birth_year:
