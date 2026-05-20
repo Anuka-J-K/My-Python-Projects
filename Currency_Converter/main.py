@@ -3,7 +3,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8') # this is for the terminal to display the sinhala characters correctly. Also, it is used to display the emoji's 
 
-print("🌍 Currency Converter ක්‍රියාත්මක වෙමින්...\n")
+print("🌍 Currency Converter is running...\n")
 
 url = "https://api.exchangerate-api.com/v4/latest/USD"
 
@@ -13,15 +13,20 @@ try:
     
     data = response.json()
     lkr_rate = data['rates']['LKR']
+    lkr_to_usd = 1 / lkr_rate
     date = data['date']
     
-    print("✅ සාර්ථකව සම්බන්ධ වුණා!")
-    print(f"📅 දිනය: {date}")
+    print("✅ Successfully Connected!")
+    print(f"📅 Date: {date}")
     print(f"💵 1 USD = {lkr_rate:.2f} LKR")
+
+    amount = float(input("Enter amount in USD: "))
+    converted_amount = amount * lkr_rate
+    print(f"{amount} USD = {converted_amount} LKR")
     
 
 except Exception as e:
-    print("❌ යම් දෝෂයක් ඇති විය.")
+    print("❌ An error occurred.")
     print(f"Error: {e}")
 
 """
@@ -56,6 +61,6 @@ except Exception as e:
     readline() - used to read the input from the user.
     readlines() - used to read the input from the user.
     
-    
+
     
     """
